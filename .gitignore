@@ -1,0 +1,63 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.tmp
+*.swp
+
+# Build outputs
+build/
+dist/
+out/
+*.exe
+*.apk
+*.dmg
+*.zip
+*.tar.gz
+
+# Node.js / JS
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Java / Android
+*.class
+*.jar
+*.war
+*.ear
+*.apk
+*.dex
+*.gradle
+build/
+
+# C / C++
+*.o
+*.obj
+*.so
+*.dll
+*.lib
+*.exe
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Misc
+*.bak
+*.old
+*.orig
