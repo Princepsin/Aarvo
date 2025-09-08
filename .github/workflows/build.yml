@@ -1,0 +1,56 @@
+name: Aarvo Build
+
+on:
+  push:
+    tags:
+      - "v*.*.*"   # जब भी आप v1.0.0 जैसा tag push करेंगे, build चलेगा
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.2"  # Latest stable Flutter version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Android APK Build
+      - name: Build APK
+        run: flutter build apk --release
+
+      # Web Build
+      - name: Build Web
+        run: flutter build web
+
+      # Windows Build (only runs if on Windows runner)
+      # Note: GitHub Actions free plan पर Windows runner available है
+      - name: Build Windows
+        if: runner.os == 'Windows'
+        run: flutter build windows
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: aarvo-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Upload Web
+        uses: actions/upload-artifact@v3
+        with:
+          name: aarvo-web
+          path: build/web
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/app/outputs/flutter-apk/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
