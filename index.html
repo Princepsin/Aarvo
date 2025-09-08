@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aarvo — Eternal Explore</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">A</div>
+      <div class="titles">
+        <div class="app-name">Aarvo</div>
+        <div class="subtitle">Eternal Explore</div>
+      </div>
+    </div>
+    <div class="device-code" id="deviceCode">Code: —</div>
+  </header>
+
+  <main id="main">
+    <section class="suggestions" id="suggestions"></section>
+    <div id="loader" class="loader">Scroll down to load more…</div>
+  </main>
+
+  <footer class="searchbar">
+    <button id="prevBtn" class="nav-btn" aria-label="Previous">◀</button>
+    <div class="search-wrap">
+      <input id="searchInput" placeholder="Search anything..." aria-label="Search"/>
+      <button id="searchBtn" class="search-btn">🔍</button>
+    </div>
+    <button id="nextBtn" class="nav-btn" aria-label="Next">▶</button>
+  </footer>
+
+  <div class="controls">
+    <label><input type="checkbox" id="bgServices" checked> Background services</label>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

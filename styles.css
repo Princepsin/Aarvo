@@ -1,0 +1,93 @@
+/* Paste this into CodePen's CSS panel (styles.css) */
+:root{
+  --bg1:#0f172a;
+  --bg2:#07103b;
+  --card: rgba(255,255,255,0.04);
+  --accent: #60a5fa;
+  --muted: rgba(255,255,255,0.7);
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+  font-size: 16px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:#ffffff;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.3;
+  padding-bottom:80px; /* for searchbar */
+}
+
+/* Topbar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px;
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(6px);
+  background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  z-index:10;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+  width:44px;height:44px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7dd3fc);
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:#072;
+  color:#021124;font-size:20px;
+  box-shadow:0 4px 14px rgba(11,78,153,0.2);
+}
+.titles{line-height:1}
+.app-name{font-weight:700;font-size:15px}
+.subtitle{font-size:12px;opacity:0.8}
+
+/* device code */
+.device-code{font-size:12px;padding:6px 10px;background:var(--glass);border-radius:999px;opacity:0.95}
+
+/* Main suggestions */
+main{padding:12px}
+.suggestions{display:grid;grid-template-columns:1fr;gap:10px}
+.card{
+  background:var(--card);
+  padding:12px;border-radius:12px;
+  display:flex;gap:10px;align-items:flex-start;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+.card .thumb{
+  width:72px;height:52px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-weight:600;
+  background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.card .meta{flex:1}
+.type{font-size:11px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,0.03);display:inline-block;margin-bottom:6px}
+.title{font-weight:600}
+.desc{font-size:13px;opacity:0.85;margin-top:6px}
+
+/* loader */
+.loader{text-align:center;padding:12px;color:var(--muted);font-size:13px}
+
+/* Bottom search bar */
+.searchbar{
+  position:fixed;left:0;right:0;bottom:0;padding:10px;display:flex;gap:8px;align-items:center;
+  background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.35));
+  backdrop-filter: blur(8px);
+  box-shadow:0 -6px 22px rgba(0,0,0,0.6);
+  padding-left:calc(env(safe-area-inset-left) + 10px);
+  padding-right:calc(env(safe-area-inset-right) + 10px);
+}
+.search-wrap{flex:1;display:flex;gap:8px;align-items:center}
+.search-wrap input{
+  flex:1;padding:12px;border-radius:12px;border:0;outline:none;background:var(--glass);color:#fff;font-size:15px;
+}
+.search-btn{padding:10px;border-radius:10px;border:0;background:var(--accent);color:#021124;font-weight:700}
+.nav-btn{width:44px;height:44px;border-radius:10px;border:0;background:rgba(255,255,255,0.03);color:#fff;font-size:18px}
+
+/* controls */
+.controls{position:fixed;right:12px;bottom:90px;background:var(--glass);padding:8px;border-radius:10px;font-size:13px}
+
+/* highlight for selected */
+.card.selected{outline:2px solid rgba(96,165,250,0.22)}
