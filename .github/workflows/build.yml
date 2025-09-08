@@ -1,0 +1,46 @@
+name: Aarvo Build
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.2"
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK (Android)
+        run: flutter build apk --release
+
+      - name: Build Web (PWA)
+        run: flutter build web
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: aarvo-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Upload Web Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: aarvo-web
+          path: build/web
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/app/outputs/flutter-apk/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
