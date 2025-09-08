@@ -1,0 +1,30 @@
+name: aarvo
+description: Aarvo - All in One starter (cross-platform)
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State / storage / utils
+  shared_preferences: ^2.1.1
+  uuid: ^4.2.0
+  file_picker: ^5.2.5
+  path_provider: ^2.0.14
+  just_audio: ^0.9.34
+  provider: ^6.0.5
+
+  # video player optional for future:
+  video_player: ^2.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
